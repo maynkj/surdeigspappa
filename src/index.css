@@ -7,7 +7,7 @@ body,
 }
 
 main {
-  height: 100%;
+  height: calc(100% - 40px);
   padding: 20px;
   background-color: black;
   color: white;

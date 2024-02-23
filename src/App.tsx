@@ -17,6 +17,20 @@ const theme = createTheme({
   },
 });
 
+theme.typography.h1 = {
+  fontWeight: 300,
+  lineHeight: 1.167,
+  letterSpacing: '-0.01562em',
+  marginBottom: '1rem',
+  fontSize: '2rem',
+  '@media (min-width:480px)': {
+    fontSize: '3rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '6rem',
+  },
+};
+
 interface QuestionBlockProps {
   question: string;
   onClick: (answer: boolean) => void;
@@ -24,7 +38,7 @@ interface QuestionBlockProps {
 
 const QuestionBlock = ({ question, onClick }: QuestionBlockProps) => (
   <>
-    <Typography variant="h1" marginBottom={2}>
+    <Typography variant="h1" marginBottom={2} textAlign="center">
       {question}
     </Typography>
     <Stack flexDirection="row" justifyContent="center" marginTop={2}>
@@ -67,7 +81,7 @@ const TryAgainButton = ({ onClick }: TryAgainButtonProps) => (
 
 const NotASourdoughDadBlock = ({ onClick }: TryAgainButtonProps) => (
   <>
-    <Typography variant="h1" marginBottom={2}>
+    <Typography variant="h1" marginBottom={2} textAlign="center">
       Du er ikke surdeigspappa!
     </Typography>
     <TryAgainButton onClick={onClick} />
@@ -76,13 +90,9 @@ const NotASourdoughDadBlock = ({ onClick }: TryAgainButtonProps) => (
 
 const ASourdoughDadBlock = ({ onClick }: TryAgainButtonProps) => (
   <>
-    <Typography
-      variant="h1"
-      display="flex"
-      alignItems="center"
-      marginBottom={2}
-    >
-      Du er surdeigspappa! <FavoriteBorder sx={{ fontSize: '5rem' }} />
+    <Typography variant="h1" marginBottom={2} textAlign="center">
+      Du er surdeigspappa!{' '}
+      <FavoriteBorder sx={{ fontSize: 'inherit', verticalAlign: 'middle' }} />
     </Typography>
     <TryAgainButton onClick={onClick} />
   </>
